@@ -20,6 +20,15 @@ export async function getStaticProps() {
     props: {
       posts,
     },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every 1 second
+    //
+    // Now the list of blog posts will be revalidated once per second; 
+    // if you add a new blog post it will be available almost immediately, 
+    // without having to re-build your app or make a new deployment.
+    // :mind-blown:
+    revalidate: 1, // In seconds
   }
 }
 
