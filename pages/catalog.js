@@ -18,7 +18,7 @@ const QUERY = `query catalog {
 }`;
 
 export default function Catalog(props) {
-  const { data, err } = useSWR(QUERY, clientFetcher, {
+  const { data, err, mutate } = useSWR(QUERY, clientFetcher, {
     initialData: props.data,
   });
 
@@ -31,6 +31,7 @@ export default function Catalog(props) {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
+        <button onClick={() => mutate()}>Refetch!</button>
         <div className={styles.grid}>
           {data.catalog.courses.map((course) => (
             <div key={course.id} className={styles.card}>
@@ -39,7 +40,6 @@ export default function Catalog(props) {
             </div>
           ))}
         </div>
-        <button onClick={() => refetch()}>Refetch!</button>
       </main>
     </div>
   );
