@@ -20,6 +20,12 @@ export async function getStaticProps() {
     props: {
       posts,
     },
+    //  Incremental Static Regeneration allows you to update existing 
+    // pages by re-rendering them in the background as traffic comes in.
+    // Inspired by stale-while-revalidate, background regeneration ensures 
+    // traffic is served uninterruptedly, always from static storage, 
+    // and the newly built page is pushed only after it's done generating.
+    //
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
     // - At most once every 1 second
